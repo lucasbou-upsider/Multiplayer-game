@@ -30,6 +30,7 @@ func initialize_player(player: CharacterBody2D) -> void:
 
 
 func _on_host_pressed() -> void:
+	$CanvasLayer/Host.queue_free()
 	Networking.host_lobby()
 
 

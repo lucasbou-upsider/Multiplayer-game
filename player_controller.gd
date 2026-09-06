@@ -12,6 +12,13 @@ func _enter_tree() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("tire"):
+		var bullet = load("res://bullet.tscn").instantiate()
+		get_parent().add_child(bullet, true)
+		bullet.position = position + Vector2(200,0)
+		
+	
+	
 	progress_bar.value = healt
 	
 	# First check if we have authority over this player
