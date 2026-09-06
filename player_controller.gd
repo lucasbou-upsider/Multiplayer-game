@@ -9,16 +9,14 @@ const SPEED := 500.0
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
+	
+	if is_multiplayer_authority():
+		$Camera2D.enabled = true
+	else:
+		$Camera2D.enabled = false
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("tire"):
-		var bullet = load("res://bullet.tscn").instantiate()
-		get_parent().add_child(bullet, true)
-		bullet.position = position + Vector2(200,0)
-		
-	
-	
 	progress_bar.value = healt
 	
 	# First check if we have authority over this player
@@ -26,6 +24,11 @@ func _physics_process(delta: float) -> void:
 		return
 
 	velocity = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * SPEED
+
+	if Input.is_action_just_pressed("tire"):
+		var bullet = load("res://bullet.tscn").instantiate()
+		get_parent().add_child(bullet, true)
+		bullet.position = position + Vector2(200,0)
 
 	move_and_slide()
 
