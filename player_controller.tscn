@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://disid262nfj6n"]
 
 [ext_resource type="Script" uid="uid://yuiyiuc27blp" path="res://player_controller.gd" id="1_f0yg5"]
-[ext_resource type="Texture2D" uid="uid://bb1hmbipxgow1" path="res://icon.svg" id="2_tn7cv"]
+[ext_resource type="Texture2D" uid="uid://btett2plkcmjx" path="res://rob_blue_team_head.png" id="2_va7e3"]
 [ext_resource type="Texture2D" uid="uid://b548ngvwmwgk0" path="res://Hat.svg" id="3_va7e3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bghhj"]
@@ -20,10 +20,18 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath(".:healt")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+properties/3/path = NodePath(".:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Icon:rotation")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Icon:scale")
+properties/5/spawn = true
+properties/5/replication_mode = 1
 
 [node name="PlayerController" type="CharacterBody2D" unique_id=269044838]
 script = ExtResource("1_f0yg5")
-healt = null
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1369456165]
 
@@ -34,7 +42,10 @@ shape = SubResource("CircleShape2D_bghhj")
 shape = SubResource("RectangleShape2D_nyae5")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1519228118]
-texture = ExtResource("2_tn7cv")
+texture_filter = 1
+position = Vector2(-6.000001, 25.000002)
+scale = Vector2(3.421875, 2.84375)
+texture = ExtResource("2_va7e3")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=979780415]
 replication_config = SubResource("SceneReplicationConfig_tn7cv")

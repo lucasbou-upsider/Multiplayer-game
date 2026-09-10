@@ -17,6 +17,9 @@ func _enter_tree() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	look_at(get_global_mouse_position()) 
+	rotation += 90
+	
 	progress_bar.value = healt
 	
 	# First check if we have authority over this player
@@ -26,7 +29,10 @@ func _physics_process(delta: float) -> void:
 	velocity = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * SPEED
 
 	if Input.is_action_just_pressed("tire"):
-		inst_bullet()
+		request_bullet.rpc()
+	if Input.is_action_just_pressed("ui_select"):
+		$Icon.scale = Vector2(500, 50)
+		
 
 	move_and_slide()
 
@@ -34,10 +40,14 @@ func _physics_process(delta: float) -> void:
 		hat.scale += Vector2.ONE * delta
 	if Input.is_key_pressed(KEY_S):
 		hat.scale -= Vector2.ONE * delta
+var bullet = preload("res://bullet.tscn")
 
-@rpc("any_peer", "call_local", "reliable")
-func inst_bullet():
-	var bullet = load("res://bullet.tscn")
-	var Inst_bullet = bullet.instantiate()
-	Inst_bullet.position = position
-	get_parent().add_child(Inst_bullet, true)
+@rpc("any_peer", "reliable")
+func request_bullet() -> void:
+	if not multiplayer.is_server():
+		return
+
+	var insbullet = bullet.instantiate()
+	insbullet.position = global_position
+
+	get_parent().add_child(bullet, true)
