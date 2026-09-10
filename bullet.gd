@@ -13,3 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	area.get_parent().healt -= 10 
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

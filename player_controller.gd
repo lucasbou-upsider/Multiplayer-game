@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_S):
 		hat.scale -= Vector2.ONE * delta
 
+@rpc("any_peer", "call_local", "reliable")
 func inst_bullet():
 	var bullet = load("res://bullet.tscn")
 	var Inst_bullet = bullet.instantiate()

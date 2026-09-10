@@ -29,4 +29,10 @@ shape = SubResource("RectangleShape2D_44saq")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1927078699]
 replication_config = SubResource("SceneReplicationConfig_v8qja")
 
+[node name="Timer" type="Timer" parent="." unique_id=837300390]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
