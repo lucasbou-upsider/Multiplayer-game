@@ -23,6 +23,7 @@ properties/2/replication_mode = 1
 
 [node name="PlayerController" type="CharacterBody2D" unique_id=269044838]
 script = ExtResource("1_f0yg5")
+healt = null
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1369456165]
 
@@ -55,7 +56,3 @@ offset_left = -94.0
 offset_top = -100.0
 offset_right = 98.0
 offset_bottom = -73.0
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=328475012]
-_spawnable_scenes = PackedStringArray("uid://j6hn1mw02q85")
-spawn_path = NodePath("..")

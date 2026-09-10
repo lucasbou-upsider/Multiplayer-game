@@ -26,9 +26,7 @@ func _physics_process(delta: float) -> void:
 	velocity = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * SPEED
 
 	if Input.is_action_just_pressed("tire"):
-		var bullet = load("res://bullet.tscn").instantiate()
-		get_parent().add_child(bullet, true)
-		bullet.position = position + Vector2(200,0)
+		inst_bullet()
 
 	move_and_slide()
 
@@ -36,3 +34,9 @@ func _physics_process(delta: float) -> void:
 		hat.scale += Vector2.ONE * delta
 	if Input.is_key_pressed(KEY_S):
 		hat.scale -= Vector2.ONE * delta
+
+func inst_bullet():
+	var bullet = load("res://bullet.tscn")
+	var Inst_bullet = bullet.instantiate()
+	Inst_bullet.position = position
+	get_parent().add_child(Inst_bullet, true)
