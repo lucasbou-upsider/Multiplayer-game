@@ -1,14 +1,16 @@
 extends Node2D
 
 var healt: int = 100
-# Called when the node enters the scene tree for the first time.
+var direction 
+
 func _ready() -> void:
-	pass
+	look_at(get_global_mouse_position()) 
+	direction = get_global_mouse_position()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
-	position.x += 10
+	position += transform.x * 40
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

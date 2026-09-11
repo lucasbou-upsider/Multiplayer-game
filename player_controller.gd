@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var progress_bar: ProgressBar = $ProgressBar
 
 
-const SPEED := 500.0
+var SPEED := 500.0
 
 func _ready() -> void:
 	print("Joueur créé, path: ", get_path(), " sur peer id: ", multiplayer.get_unique_id())
@@ -31,26 +31,24 @@ func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position()) 
 	rotation += 90
 
-	velocity = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * SPEED
+	velocity = Input.get_vector("gauch", "droite", "haut", "droite") * SPEED
 
 	if Input.is_action_just_pressed("tire"):
 		request_bullet.rpc()
 		print("aaaa")
 	if Input.is_action_just_pressed("ui_select"):
-		$Icon.scale = Vector2(500, 50)
+		if $Timer.time_left == 0:
+			SPEED += 3000
+			$Timer.start()
 		
 
 	move_and_slide()
 
-	if Input.is_key_pressed(KEY_G):
-		hat.scale += Vector2.ONE * delta
-	if Input.is_key_pressed(KEY_S):
-		hat.scale -= Vector2.ONE * delta
 
 var bullet = preload("res://bullet.tscn")
 
 
-@rpc("any_peer","call_local", "reliable")
+@rpc("any_peer","call_local","reliable")
 func request_bullet() -> void:
 	if not multiplayer.is_server():
 		return
@@ -59,3 +57,11 @@ func request_bullet() -> void:
 	var insbullet = bullet.instantiate()
 	insbullet.position = global_position
 	get_parent().add_child(insbullet, true)
+
+
+func _on_timer_timeout() -> void:
+	if not is_multiplayer_authority():
+		return
+	
+	SPEED = 500.0
+	
