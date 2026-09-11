@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://disid262nfj6n"]
 
 [ext_resource type="Script" uid="uid://yuiyiuc27blp" path="res://player_controller.gd" id="1_f0yg5"]
-[ext_resource type="Texture2D" uid="uid://btett2plkcmjx" path="res://rob_blue_team_head.png" id="2_va7e3"]
+[ext_resource type="Texture2D" uid="uid://btett2plkcmjx" path="res://sprite/rob_blue_team_head.png" id="2_va7e3"]
 [ext_resource type="Texture2D" uid="uid://b548ngvwmwgk0" path="res://Hat.svg" id="3_va7e3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bghhj"]

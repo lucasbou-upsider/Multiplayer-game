@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btett2plkcmjx"
-path="res://.godot/imported/rob_blue_team_head.png-4d0d4d5f798d6f224e32f59cd69519f8.ctex"
+path="res://.godot/imported/rob_blue_team_head.png-1b30512ae798185a6011a7fe351123dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rob_blue_team_head.png"
-dest_files=["res://.godot/imported/rob_blue_team_head.png-4d0d4d5f798d6f224e32f59cd69519f8.ctex"]
+source_file="res://sprite/rob_blue_team_head.png"
+dest_files=["res://.godot/imported/rob_blue_team_head.png-1b30512ae798185a6011a7fe351123dc.ctex"]
 
 [params]
 
