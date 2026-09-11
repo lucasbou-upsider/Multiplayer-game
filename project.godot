@@ -58,6 +58,7 @@ droite={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.23122165, 0.38638198, 0.20450327, 1)
 
 [steam]
 

@@ -1,14 +1,83 @@
 [gd_scene format=3 uid="uid://disid262nfj6n"]
 
 [ext_resource type="Script" uid="uid://yuiyiuc27blp" path="res://player_controller.gd" id="1_f0yg5"]
-[ext_resource type="Texture2D" uid="uid://btett2plkcmjx" path="res://sprite/rob_blue_team_head.png" id="2_va7e3"]
-[ext_resource type="Texture2D" uid="uid://b548ngvwmwgk0" path="res://Hat.svg" id="3_va7e3"]
+[ext_resource type="Texture2D" uid="uid://btett2plkcmjx" path="res://sprite/player/rob_blue_team_head.png" id="2_va7e3"]
+[ext_resource type="Texture2D" uid="uid://dc2v7fjmapte3" path="res://sprite/player/annimation_c_rob.png" id="4_6nbh1"]
+[ext_resource type="Texture2D" uid="uid://bvsuo2wprlwad" path="res://sprite/player/rob_red_team_head.png" id="4_halkx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bghhj"]
 radius = 94.36631
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyae5"]
 size = Vector2(128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nbh1"]
+atlas = ExtResource("4_6nbh1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_halkx"]
+atlas = ExtResource("4_6nbh1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4garc"]
+atlas = ExtResource("4_6nbh1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyd3o"]
+atlas = ExtResource("4_6nbh1")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bghhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nbh1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_halkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4garc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyd3o")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oamho"]
+atlas = ExtResource("2_va7e3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eoxc"]
+atlas = ExtResource("4_halkx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jsphu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oamho")
+}],
+"loop": 1,
+"name": &"Blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eoxc")
+}],
+"loop": 1,
+"name": &"Red",
+"speed": 5.0
+}]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tn7cv"]
 properties/0/path = NodePath(".:position")
@@ -41,26 +110,29 @@ shape = SubResource("CircleShape2D_bghhj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1388888273]
 shape = SubResource("RectangleShape2D_nyae5")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=1519228118]
+[node name="Roue" type="AnimatedSprite2D" parent="." unique_id=1505140004]
 texture_filter = 1
-position = Vector2(-6.000001, 25.000002)
-scale = Vector2(3.421875, 2.84375)
-texture = ExtResource("2_va7e3")
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bghhj")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.35543394
+offset = Vector2(-1.99, 0)
+
+[node name="Tete" type="AnimatedSprite2D" parent="." unique_id=1754982721]
+texture_filter = 1
+position = Vector2(0, -9.536743e-07)
+rotation = -1.5707964
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_jsphu")
+animation = &"Red"
+offset = Vector2(5.915, 0)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=979780415]
 replication_config = SubResource("SceneReplicationConfig_tn7cv")
 
-[node name="Hat" type="Node2D" parent="." unique_id=547089519]
-unique_name_in_owner = true
-position = Vector2(0, -24)
-
-[node name="HatSprite" type="Sprite2D" parent="Hat" unique_id=517926601]
-position = Vector2(0, -59.999996)
-scale = Vector2(0.245, 0.245)
-texture = ExtResource("3_va7e3")
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2122987184]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.6, 0.6)
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=611506492]
 offset_left = -94.0
