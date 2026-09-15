@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://i5qj8vtleg2g"]
+
+[ext_resource type="Script" uid="uid://g74da82efgxe" path="res://ore.gd" id="1_wctjg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_44saq"]
+radius = 45.0
+
+[node name="Ore" type="Node2D" unique_id=1681044546]
+script = ExtResource("1_wctjg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=392763831]
+offset_left = -54.0
+offset_top = -46.0
+offset_right = 54.0
+offset_bottom = 57.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2066408845]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=253211580]
+shape = SubResource("CircleShape2D_44saq")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

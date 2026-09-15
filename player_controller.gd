@@ -9,6 +9,7 @@ var Speed := 500.0
 var accelariation = 2000
 var friction = 1000
 var wheel_turn_speed = 10
+var target_zoom: Vector2 = Vector2.ONE
 
 func _ready() -> void:
 	print("Joueur créé, path: ", get_path(), " sur peer id: ", multiplayer.get_unique_id())
@@ -53,6 +54,10 @@ func _physics_process(delta: float) -> void:
 			Speed += 3000
 			$Timer.start()
 		
+	if Input.is_action_just_pressed("dezoom"):
+		$Camera2D.zoom = lerp($Camera2D.zoom , $Camera2D.zoom + Vector2(0.05, 0.05), 1000 * delta )
+	
+	#$Camera2D.zoom = $Camera2D.zoom.lerp(target_zoom, 10.0 * delta)
 
 	move_and_slide()
 
@@ -78,7 +83,18 @@ func _on_timer_timeout() -> void:
 var tween : Tween
 var time = 0.1
 func _input(event: InputEvent) -> void:
-	pass
+	if not is_multiplayer_authority():
+		return
+	#if event.is_action_pressed("dezoom"):
+		#target_zoom -= Vector2(0.05, 0.05)
+	#elif event.is_action_pressed("zoom"):
+		#target_zoom += Vector2(0.05, 0.05)
+	#target_zoom.x = clamp(target_zoom.x, 0.1, 1)
+	#target_zoom.y = clamp(target_zoom.y, 0.1, 1)
+	
+	
+	
+	
 	#if event.is_action_pressed("droite"):
 		#tween = create_tween()
 		#tween.tween_property(roue, "rotation_degrees", 90, time)
@@ -97,3 +113,4 @@ func animation():
 		roue.animation = "default"
 	else:
 		roue.animation = "move"
+		

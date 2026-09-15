@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ceuqqq3clw6qn" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://bb1hmbipxgow1" path="res://icon.svg" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://wmkwehhso6sl" path="res://sprite/map/fleur_feuilles.png" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://i5qj8vtleg2g" path="res://Ore.tscn" id="4_1bvp3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("2_h2yge")
@@ -50,6 +51,9 @@ spawn_path = NodePath("..")
 [node name="Icon" type="Sprite2D" parent="." unique_id=1878668369]
 position = Vector2(553, 310)
 texture = ExtResource("2_0xm2m")
+
+[node name="Vestige" parent="." unique_id=1681044546 instance=ExtResource("4_1bvp3")]
+position = Vector2(-14, 243)
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="spawned" from="PlayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

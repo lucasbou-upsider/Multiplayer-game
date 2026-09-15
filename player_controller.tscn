@@ -79,6 +79,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6nbh1"]
+radius = 19.0
+height = 118.0
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tn7cv"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -129,6 +133,25 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_jsphu")
 animation = &"Red"
 offset = Vector2(5.915, 0)
+
+[node name="Pioche" type="Node2D" parent="Tete" unique_id=1912279603]
+position = Vector2(-3.1789145e-07, -1.38954755e-14)
+rotation = 1.5707964
+scale = Vector2(0.33333334, 0.33333334)
+
+[node name="ColorRect" type="ColorRect" parent="Tete/Pioche" unique_id=1543225451]
+offset_left = -21.0
+offset_top = -188.0
+offset_right = 19.0
+offset_bottom = -69.0
+color = Color(0.5072435, 1.2694486e-06, 1.92523e-07, 1)
+
+[node name="pioche" type="Area2D" parent="Tete/Pioche" unique_id=1105044110]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tete/Pioche/pioche" unique_id=970997569]
+position = Vector2(-1, -129)
+shape = SubResource("CapsuleShape2D_6nbh1")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=979780415]
 replication_config = SubResource("SceneReplicationConfig_tn7cv")
