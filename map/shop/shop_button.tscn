@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c02qq26lijeye"]
+
+[node name="Button" type="Button" unique_id=2062361952]
+theme_override_font_sizes/font_size = 73
+text = "dash"

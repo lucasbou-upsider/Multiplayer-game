@@ -4,12 +4,18 @@ extends CharacterBody2D
 @export var healt := 100.0
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var tete: AnimatedSprite2D = $Tete
-var bullet = preload("res://bullet.tscn")
+var bullet = preload("res://player/bullet.tscn")
 var Speed := 500.0
 var accelariation = 2000
 var friction = 1000
 var wheel_turn_speed = 10
 var target_zoom: Vector2 = Vector2.ONE
+var target_pos: Vector2
+
+@export_category("dash parametre")
+@export var dash:bool
+@export var dash_time = 0.2
+@export var dash_pos:Vector2
 
 func _ready() -> void:
 	print("Joueur créé, path: ", get_path(), " sur peer id: ", multiplayer.get_unique_id())
@@ -45,13 +51,20 @@ func _physics_process(delta: float) -> void:
 	if input_dir != Vector2.ZERO:
 		var target_angle = input_dir.angle()
 		roue.rotation = lerp_angle(roue.rotation, target_angle, wheel_turn_speed * delta)
-
+	position = position.lerp(target_pos,10 * delta)
+	if !dash:
+		target_pos = position
+	else:
+		target_pos = dash_pos
 
 	if Input.is_action_just_pressed("tire"):
 		request_bullet.rpc()
 	if Input.is_action_just_pressed("ui_select"):
 		if $Timer.time_left == 0:
-			Speed += 3000
+			dash = true
+			dash_pos = $Tete/RayCast2D.to_global($Tete/RayCast2D.target_position)
+			await get_tree().create_timer(dash_time).timeout
+			dash = false
 			$Timer.start()
 		
 	if Input.is_action_just_pressed("dezoom"):

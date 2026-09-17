@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvsuo2wprlwad"
-path="res://.godot/imported/rob_red_team_head.png-cc15354a0aaf9dac3cb5f3fda8697108.ctex"
+uid="uid://dc2v7fjmapte3"
+path="res://.godot/imported/annimation_c_rob.png-d60577a12aee74314cad3a173615a8a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/player/rob_red_team_head.png"
-dest_files=["res://.godot/imported/rob_red_team_head.png-cc15354a0aaf9dac3cb5f3fda8697108.ctex"]
+source_file="res://player/player_sprite/annimation_c_rob.png"
+dest_files=["res://.godot/imported/annimation_c_rob.png-d60577a12aee74314cad3a173615a8a4.ctex"]
 
 [params]
 

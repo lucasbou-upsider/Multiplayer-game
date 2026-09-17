@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://b713cldrt1kbl"]
+
+[ext_resource type="Script" uid="uid://b4ijirabopxap" path="res://map/shop/shop.gd" id="1_jkcj5"]
+[ext_resource type="PackedScene" uid="uid://c02qq26lijeye" path="res://map/shop/shop_button.tscn" id="2_7kaw4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_44saq"]
+radius = 280.4015
+
+[node name="Shop" type="Node2D" unique_id=900195151]
+script = ExtResource("1_jkcj5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1337255065]
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 20.0
+offset_bottom = 21.0
+
+[node name="Label" type="Label" parent="." unique_id=1777047114]
+offset_left = -67.0
+offset_top = -43.0
+offset_right = 63.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "shop"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=352060979]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=363655469]
+shape = SubResource("CircleShape2D_44saq")
+
+[node name="ShopContainer" type="GridContainer" parent="." unique_id=73750245]
+visible = false
+z_index = 2
+offset_left = -271.0
+offset_top = -177.0
+offset_right = 271.0
+offset_bottom = 158.0
+columns = 3
+
+[node name="Button" parent="ShopContainer" unique_id=2062361952 instance=ExtResource("2_7kaw4")]
+layout_mode = 2
+
+[node name="Button2" parent="ShopContainer" unique_id=498024389 instance=ExtResource("2_7kaw4")]
+layout_mode = 2
+
+[node name="Button3" parent="ShopContainer" unique_id=1177319014 instance=ExtResource("2_7kaw4")]
+layout_mode = 2
+
+[node name="Button4" parent="ShopContainer" unique_id=3901360 instance=ExtResource("2_7kaw4")]
+layout_mode = 2
+
+[node name="Button5" parent="ShopContainer" unique_id=614794303 instance=ExtResource("2_7kaw4")]
+layout_mode = 2
+
+[node name="Button6" parent="ShopContainer" unique_id=723817955 instance=ExtResource("2_7kaw4")]
+layout_mode = 2
+
+[node name="Button7" parent="ShopContainer" unique_id=1276277313 instance=ExtResource("2_7kaw4")]
+layout_mode = 2
+
+[node name="Button8" parent="ShopContainer" unique_id=377532612 instance=ExtResource("2_7kaw4")]
+layout_mode = 2
+
+[node name="Button9" parent="ShopContainer" unique_id=993478766 instance=ExtResource("2_7kaw4")]
+layout_mode = 2
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc2v7fjmapte3"
-path="res://.godot/imported/annimation_c_rob.png-4be53b68da80177ed50327bd31e0e1e3.ctex"
+uid="uid://wmkwehhso6sl"
+path="res://.godot/imported/fleur_feuilles.png-c7a6aa0ce6373a7061b260ce4e960cee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/player/annimation_c_rob.png"
-dest_files=["res://.godot/imported/annimation_c_rob.png-4be53b68da80177ed50327bd31e0e1e3.ctex"]
+source_file="res://map/sprite/fleur_feuilles.png"
+dest_files=["res://.godot/imported/fleur_feuilles.png-c7a6aa0ce6373a7061b260ce4e960cee.ctex"]
 
 [params]
 

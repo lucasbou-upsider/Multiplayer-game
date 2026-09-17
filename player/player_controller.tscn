@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://disid262nfj6n"]
 
-[ext_resource type="Script" uid="uid://yuiyiuc27blp" path="res://player_controller.gd" id="1_f0yg5"]
-[ext_resource type="Texture2D" uid="uid://btett2plkcmjx" path="res://sprite/player/rob_blue_team_head.png" id="2_va7e3"]
-[ext_resource type="Texture2D" uid="uid://dc2v7fjmapte3" path="res://sprite/player/annimation_c_rob.png" id="4_6nbh1"]
-[ext_resource type="Texture2D" uid="uid://bvsuo2wprlwad" path="res://sprite/player/rob_red_team_head.png" id="4_halkx"]
+[ext_resource type="Script" uid="uid://yuiyiuc27blp" path="res://player/player_controller.gd" id="1_wovy8"]
+[ext_resource type="Texture2D" uid="uid://dc2v7fjmapte3" path="res://player/player_sprite/annimation_c_rob.png" id="2_06a2f"]
+[ext_resource type="Texture2D" uid="uid://btett2plkcmjx" path="res://player/player_sprite/rob_blue_team_head.png" id="3_o54s7"]
+[ext_resource type="Texture2D" uid="uid://bvsuo2wprlwad" path="res://player/player_sprite/rob_red_team_head.png" id="4_ji2o6"]
+
+[sub_resource type="Gradient" id="Gradient_wovy8"]
+offsets = PackedFloat32Array(0.21604939, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bghhj"]
 radius = 94.36631
@@ -12,19 +16,19 @@ radius = 94.36631
 size = Vector2(128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nbh1"]
-atlas = ExtResource("4_6nbh1")
+atlas = ExtResource("2_06a2f")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_halkx"]
-atlas = ExtResource("4_6nbh1")
+atlas = ExtResource("2_06a2f")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4garc"]
-atlas = ExtResource("4_6nbh1")
+atlas = ExtResource("2_06a2f")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lyd3o"]
-atlas = ExtResource("4_6nbh1")
+atlas = ExtResource("2_06a2f")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bghhj"]
@@ -53,11 +57,11 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oamho"]
-atlas = ExtResource("2_va7e3")
+atlas = ExtResource("3_o54s7")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3eoxc"]
-atlas = ExtResource("4_halkx")
+atlas = ExtResource("4_ji2o6")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jsphu"]
@@ -106,8 +110,19 @@ properties/6/path = NodePath(".:healt")
 properties/6/spawn = true
 properties/6/replication_mode = 1
 
-[node name="PlayerController" type="CharacterBody2D" unique_id=269044838]
-script = ExtResource("1_f0yg5")
+[node name="Player" type="CharacterBody2D" unique_id=269044838]
+script = ExtResource("1_wovy8")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1007496944]
+position = Vector2(0, 1)
+amount = 39
+emission_shape = 1
+emission_sphere_radius = 50.42
+gravity = Vector2(0, 0)
+scale_amount_min = 3.4
+scale_amount_max = 3.4
+color = Color(0.12309166, 0.21938372, 0.10581239, 1)
+color_ramp = SubResource("Gradient_wovy8")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1369456165]
 
@@ -144,6 +159,7 @@ offset_left = -21.0
 offset_top = -188.0
 offset_right = 19.0
 offset_bottom = -69.0
+mouse_filter = 2
 color = Color(0.5072435, 1.2694486e-06, 1.92523e-07, 1)
 
 [node name="pioche" type="Area2D" parent="Tete/Pioche" unique_id=1105044110]
@@ -153,20 +169,25 @@ unique_name_in_owner = true
 position = Vector2(-1, -129)
 shape = SubResource("CapsuleShape2D_6nbh1")
 
+[node name="RayCast2D" type="RayCast2D" parent="Tete" unique_id=476831592]
+target_position = Vector2(120.66667, 5.274507e-06)
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=979780415]
 replication_config = SubResource("SceneReplicationConfig_tn7cv")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2122987184]
 zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=611506492]
 offset_left = -94.0
 offset_top = -100.0
 offset_right = 98.0
 offset_bottom = -73.0
+mouse_filter = 2
 
 [node name="Timer" type="Timer" parent="." unique_id=1200396666]
-wait_time = 0.2
+wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

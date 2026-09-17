@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wmkwehhso6sl"
-path="res://.godot/imported/fleur_feuilles.png-ca6d3eaa75747ee43318421c48025f01.ctex"
+uid="uid://m768psvhjc7b"
+path="res://.godot/imported/Vestige.png-05c7acffa759b38b278a9d52319e197e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/map/fleur_feuilles.png"
-dest_files=["res://.godot/imported/fleur_feuilles.png-ca6d3eaa75747ee43318421c48025f01.ctex"]
+source_file="res://map/sprite/Vestige.png"
+dest_files=["res://.godot/imported/Vestige.png-05c7acffa759b38b278a9d52319e197e.ctex"]
 
 [params]
 

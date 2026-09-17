@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://j6hn1mw02q85"]
 
-[ext_resource type="Texture2D" uid="uid://b548ngvwmwgk0" path="res://Hat.svg" id="1_v7oki"]
-[ext_resource type="Script" uid="uid://dfax6tqps61xy" path="res://bullet.gd" id="1_v8qja"]
+[ext_resource type="Script" uid="uid://dfax6tqps61xy" path="res://player/bullet.gd" id="1_j40gx"]
+[ext_resource type="Texture2D" uid="uid://b548ngvwmwgk0" path="res://Hat.svg" id="2_boyjm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44saq"]
 size = Vector2(176, 45)
@@ -13,13 +13,13 @@ properties/0/replication_mode = 1
 
 [node name="bullet" type="Node2D" unique_id=306834156]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_v8qja")
+script = ExtResource("1_j40gx")
 
 [node name="Hat" type="Sprite2D" parent="." unique_id=1495428028]
 position = Vector2(0, 2)
 rotation = 1.5752312
 scale = Vector2(0.15389189, 0.5892967)
-texture = ExtResource("1_v7oki")
+texture = ExtResource("2_boyjm")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=780989091]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m768psvhjc7b"
-path="res://.godot/imported/Vestige.png-cc16014d3cafc12835b6662ba63198fc.ctex"
+uid="uid://bvsuo2wprlwad"
+path="res://.godot/imported/rob_red_team_head.png-84e6250bac3a8d994b7d5d5361a8aaaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/map/Vestige.png"
-dest_files=["res://.godot/imported/Vestige.png-cc16014d3cafc12835b6662ba63198fc.ctex"]
+source_file="res://player/player_sprite/rob_red_team_head.png"
+dest_files=["res://.godot/imported/rob_red_team_head.png-84e6250bac3a8d994b7d5d5361a8aaaf.ctex"]
 
 [params]
 

@@ -5,6 +5,7 @@ const PLAYER_CONTROLLER = preload("uid://disid262nfj6n")
 var players: Array[CharacterBody2D]
 
 func _ready() -> void:
+	$CanvasLayer.visible = true
 	Networking.host_created.connect(on_host_created)
 
 
@@ -30,7 +31,7 @@ func initialize_player(player: CharacterBody2D) -> void:
 
 
 func _on_host_pressed() -> void:
-	$CanvasLayer/Host.queue_free()
+	$CanvasLayer.queue_free()
 	Networking.host_lobby()
 
 

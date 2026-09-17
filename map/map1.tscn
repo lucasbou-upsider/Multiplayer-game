@@ -1,12 +1,13 @@
 [gd_scene format=4 uid="uid://dp3ckme4ui35i"]
 
-[ext_resource type="Script" uid="uid://ceuqqq3clw6qn" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://bb1hmbipxgow1" path="res://icon.svg" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://wmkwehhso6sl" path="res://sprite/map/fleur_feuilles.png" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://i5qj8vtleg2g" path="res://Ore.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://ceuqqq3clw6qn" path="res://map/main.gd" id="1_qwug6"]
+[ext_resource type="Texture2D" uid="uid://wmkwehhso6sl" path="res://map/sprite/fleur_feuilles.png" id="2_6kwbc"]
+[ext_resource type="Texture2D" uid="uid://bb1hmbipxgow1" path="res://icon.svg" id="3_qjp2l"]
+[ext_resource type="PackedScene" uid="uid://i5qj8vtleg2g" path="res://map/ores/Ore.tscn" id="4_31jjo"]
+[ext_resource type="PackedScene" uid="uid://b713cldrt1kbl" path="res://map/shop/shop.tscn" id="5_pagyc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
-texture = ExtResource("2_h2yge")
+texture = ExtResource("2_6kwbc")
 texture_region_size = Vector2i(32, 32)
 use_texture_padding = false
 0:2/0 = 0
@@ -20,7 +21,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_1bvp3")
 
 [node name="Main" type="Node2D" unique_id=491597528]
-script = ExtResource("1_ig7tw")
+script = ExtResource("1_qwug6")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=575782871]
 texture_filter = 1
@@ -30,10 +31,28 @@ tile_set = SubResource("TileSet_44saq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1237504990]
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=761129674]
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 1213.0
+offset_bottom = 704.0
+color = Color(0, 0, 0, 0.7137255)
+
 [node name="Host" type="Button" parent="CanvasLayer" unique_id=190439626]
-offset_right = 51.0
-offset_bottom = 31.0
-text = "HOST"
+offset_left = 127.0
+offset_top = 330.0
+offset_right = 981.0
+offset_bottom = 536.0
+theme_override_font_sizes/font_size = 145
+text = "DEFENDEUR"
+
+[node name="Host2" type="Button" parent="CanvasLayer" unique_id=1257692993]
+offset_left = 163.0
+offset_top = 85.0
+offset_right = 908.0
+offset_bottom = 291.0
+theme_override_font_sizes/font_size = 145
+text = "CHASSEUR"
 
 [node name="SpawnPoint" type="Node2D" parent="." unique_id=1487529719]
 position = Vector2(553, 308)
@@ -41,20 +60,22 @@ position = Vector2(553, 308)
 [node name="attaque" type="Node2D" parent="." unique_id=43671314]
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1177078280]
-_spawnable_scenes = PackedStringArray("uid://disid262nfj6n")
 spawn_path = NodePath("..")
 
 [node name="BulletSpawner2" type="MultiplayerSpawner" parent="." unique_id=1330228682]
-_spawnable_scenes = PackedStringArray("uid://j6hn1mw02q85")
 spawn_path = NodePath("..")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1878668369]
 position = Vector2(553, 310)
-texture = ExtResource("2_0xm2m")
+texture = ExtResource("3_qjp2l")
 
-[node name="Vestige" parent="." unique_id=1681044546 instance=ExtResource("4_1bvp3")]
+[node name="Vestige" parent="." unique_id=1681044546 instance=ExtResource("4_31jjo")]
 position = Vector2(-14, 243)
 
+[node name="Shop" parent="." unique_id=900195151 instance=ExtResource("5_pagyc")]
+position = Vector2(913, 428)
+
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/Host2" to="." method="_on_host_pressed"]
 [connection signal="spawned" from="PlayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
 [connection signal="spawned" from="BulletSpawner2" to="." method="_on_multiplayer_spawner_spawned"]
