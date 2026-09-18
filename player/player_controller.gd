@@ -19,11 +19,14 @@ var target_pos: Vector2
 
 func _ready() -> void:
 	print("Joueur créé, path: ", get_path(), " sur peer id: ", multiplayer.get_unique_id())
-
+	if name == "chasseur":
+		$Tete.play("Red")
+	else:
+		$Tete.play("Blue")
 
 
 func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
+	set_multiplayer_authority(multiplayer.get_unique_id())
 	
 	if is_multiplayer_authority():
 		$Camera2D.enabled = true
@@ -62,13 +65,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_select"):
 		if $Timer.time_left == 0:
 			dash = true
-			dash_pos = $Tete/RayCast2D.to_global($Tete/RayCast2D.target_position)
+			dash_pos = $Roue/RayCast2D.to_global($Roue/RayCast2D.target_position)
 			await get_tree().create_timer(dash_time).timeout
 			dash = false
 			$Timer.start()
 		
 	if Input.is_action_just_pressed("dezoom"):
 		$Camera2D.zoom = lerp($Camera2D.zoom , $Camera2D.zoom + Vector2(0.05, 0.05), 1000 * delta )
+	if Input.is_action_just_pressed("zoom"):
+		$Camera2D.zoom = lerp($Camera2D.zoom , $Camera2D.zoom - Vector2(0.05, 0.05), 1000 * delta )
 	
 	#$Camera2D.zoom = $Camera2D.zoom.lerp(target_zoom, 10.0 * delta)
 

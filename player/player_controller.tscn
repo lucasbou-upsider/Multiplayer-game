@@ -109,6 +109,9 @@ properties/5/replication_mode = 1
 properties/6/path = NodePath(".:healt")
 properties/6/spawn = true
 properties/6/replication_mode = 1
+properties/7/path = NodePath("Tete:animation")
+properties/7/spawn = true
+properties/7/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" unique_id=269044838]
 script = ExtResource("1_wovy8")
@@ -140,13 +143,18 @@ animation = &"move"
 autoplay = "default"
 offset = Vector2(-1.99, 0)
 
+[node name="RayCast2D" type="RayCast2D" parent="Roue" unique_id=476831592]
+position = Vector2(0, -3.1789145e-07)
+rotation = -1.5707964
+target_position = Vector2(-5.3738418e-06, 115.66667)
+
 [node name="Tete" type="AnimatedSprite2D" parent="." unique_id=1754982721]
 texture_filter = 1
 position = Vector2(0, -9.536743e-07)
 rotation = -1.5707964
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_jsphu")
-animation = &"Red"
+animation = &"Blue"
 offset = Vector2(5.915, 0)
 
 [node name="Pioche" type="Node2D" parent="Tete" unique_id=1912279603]
@@ -168,9 +176,6 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tete/Pioche/pioche" unique_id=970997569]
 position = Vector2(-1, -129)
 shape = SubResource("CapsuleShape2D_6nbh1")
-
-[node name="RayCast2D" type="RayCast2D" parent="Tete" unique_id=476831592]
-target_position = Vector2(120.66667, 5.274507e-06)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=979780415]
 replication_config = SubResource("SceneReplicationConfig_tn7cv")

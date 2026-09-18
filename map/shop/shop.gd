@@ -2,12 +2,12 @@ extends Node2D
 @onready var shop_container: GridContainer = $ShopContainer
 
 var is_in_area
-# Called when the node enters the scene tree for the first time.
+@export var chasseur_shop = false
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_in_area:
 		if Input.is_action_just_pressed("interact"):
@@ -19,15 +19,19 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.get_parent().name == "1":
+	if area.get_parent().name == "chasseur" and chasseur_shop == true:
 		print("shop ouvert")
+		is_in_area = true
+	if area.get_parent().name == "defender" and chasseur_shop == false:
 		is_in_area = true
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	prints(area.get_parent().name)
-	if area.get_parent().name == "1":
-		if shop_container.visible == true:
-			shop_container.visible = false
+	if area.get_parent().name == "chasseur" and chasseur_shop == true:
 		print("shop ferme")
 		is_in_area = false
+		shop_container.visible = false
+	if area.get_parent().name == "defender" and chasseur_shop == false:
+		is_in_area = false
+		shop_container.visible = false

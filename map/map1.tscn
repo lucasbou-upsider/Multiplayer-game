@@ -30,6 +30,7 @@ tile_map_data = PackedByteArray("AAADAAgAAAAAAAIAAAAEAAgAAAAAAAIAAAAFAAgAAAAAAAI
 tile_set = SubResource("TileSet_44saq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1237504990]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=761129674]
 offset_left = -23.0
@@ -38,7 +39,7 @@ offset_right = 1213.0
 offset_bottom = 704.0
 color = Color(0, 0, 0, 0.7137255)
 
-[node name="Host" type="Button" parent="CanvasLayer" unique_id=190439626]
+[node name="defendeur_button" type="Button" parent="CanvasLayer" unique_id=190439626]
 offset_left = 127.0
 offset_top = 330.0
 offset_right = 981.0
@@ -46,7 +47,7 @@ offset_bottom = 536.0
 theme_override_font_sizes/font_size = 145
 text = "DEFENDEUR"
 
-[node name="Host2" type="Button" parent="CanvasLayer" unique_id=1257692993]
+[node name="chasseur_button" type="Button" parent="CanvasLayer" unique_id=1257692993]
 offset_left = 163.0
 offset_top = 85.0
 offset_right = 908.0
@@ -77,7 +78,11 @@ position = Vector2(-14, 243)
 [node name="Shop" parent="." unique_id=900195151 instance=ExtResource("5_pagyc")]
 position = Vector2(913, 428)
 
-[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="CanvasLayer/Host2" to="." method="_on_host_pressed"]
+[node name="Shop2" parent="." unique_id=962876758 instance=ExtResource("5_pagyc")]
+position = Vector2(-561, 347)
+chasseur_shop = true
+
+[connection signal="pressed" from="CanvasLayer/defendeur_button" to="." method="_on_defendeur_pressed"]
+[connection signal="pressed" from="CanvasLayer/chasseur_button" to="." method="_on_chasseur_pressed"]
 [connection signal="spawned" from="PlayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
 [connection signal="spawned" from="BulletSpawner2" to="." method="_on_multiplayer_spawner_spawned"]
