@@ -38,7 +38,8 @@ func initialize_player(player: CharacterBody2D) -> void:
 		player.add_collision_exception_with(other)
 	players.append(player)
 	
-	$CanvasLayer.queue_free()
+	if $CanvasLayer:
+		$CanvasLayer.queue_free()
 
 func _on_multiplayer_spawner_spawned(node: Node) -> void:
 	if node is CharacterBody2D:
