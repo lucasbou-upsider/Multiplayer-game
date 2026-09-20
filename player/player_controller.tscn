@@ -1,8 +1,7 @@
-[gd_scene format=4 uid="uid://disid262nfj6n"]
+[gd_scene format=3 uid="uid://disid262nfj6n"]
 
 [ext_resource type="Script" uid="uid://yuiyiuc27blp" path="res://player/player_controller.gd" id="1_wovy8"]
 [ext_resource type="Texture2D" uid="uid://dc2v7fjmapte3" path="res://player/player_sprite/annimation_c_rob.png" id="2_06a2f"]
-[ext_resource type="Shader" uid="uid://cadnte8s5ipk7" path="res://addons/lit/shaders/receiver/lit_receiver_fast.gdshader" id="2_o54s7"]
 [ext_resource type="Texture2D" uid="uid://btett2plkcmjx" path="res://player/player_sprite/rob_blue_team_head.png" id="3_o54s7"]
 [ext_resource type="Texture2D" uid="uid://bvsuo2wprlwad" path="res://player/player_sprite/rob_red_team_head.png" id="4_ji2o6"]
 
@@ -15,23 +14,6 @@ radius = 94.36631
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyae5"]
 size = Vector2(128, 128)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ji2o6"]
-shader = ExtResource("2_o54s7")
-shader_parameter/emissive_strength = 0.0
-shader_parameter/receiver_mask = 1
-shader_parameter/self_shadow = false
-shader_parameter/self_rect_count = 0
-shader_parameter/self_rects = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shader_parameter/specular_strength = 0.5
-shader_parameter/specular_k = 32.0
-shader_parameter/has_specular_map = false
-shader_parameter/metallic_value = 0.0
-shader_parameter/roughness_value = 1.0
-shader_parameter/shadow_steps = 64
-shader_parameter/shadow_min_step = 0.2
-shader_parameter/footprint_shadow = 16.0
-shader_parameter/directional_horizontal_scale = 32.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nbh1"]
 atlas = ExtResource("2_06a2f")
@@ -74,26 +56,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_06a2f"]
-polygon = PackedVector2Array(-12, -16, 8, -16, 8, 16, -12, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_15v75"]
-shader = ExtResource("2_o54s7")
-shader_parameter/emissive_strength = 0.0
-shader_parameter/receiver_mask = 1
-shader_parameter/self_shadow = false
-shader_parameter/self_rect_count = 0
-shader_parameter/self_rects = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shader_parameter/specular_strength = 0.5
-shader_parameter/specular_k = 32.0
-shader_parameter/has_specular_map = false
-shader_parameter/metallic_value = 0.0
-shader_parameter/roughness_value = 1.0
-shader_parameter/shadow_steps = 64
-shader_parameter/shadow_min_step = 0.2
-shader_parameter/footprint_shadow = 16.0
-shader_parameter/directional_horizontal_scale = 32.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_oamho"]
 atlas = ExtResource("3_o54s7")
 region = Rect2(0, 0, 64, 64)
@@ -124,9 +86,6 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6nbh1"]
 radius = 19.0
 height = 118.0
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_44saq"]
-polygon = PackedVector2Array(-12.999999, -11.333335, 23, -10.666666, 23, -4.3899174, 9, 3.9340247e-07, 22.666668, 4.000001, 23, 10.666668, -13.000001, 11.999999)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tn7cv"]
 properties/0/path = NodePath(".:position")
@@ -178,7 +137,6 @@ shape = SubResource("RectangleShape2D_nyae5")
 
 [node name="Roue" type="AnimatedSprite2D" parent="." unique_id=1505140004]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ji2o6")
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bghhj")
 animation = &"move"
@@ -190,12 +148,8 @@ position = Vector2(0, -3.1789145e-07)
 rotation = -1.5707964
 target_position = Vector2(-5.3738418e-06, 115.66667)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Roue" unique_id=2141001829]
-occluder = SubResource("OccluderPolygon2D_06a2f")
-
 [node name="Tete" type="AnimatedSprite2D" parent="." unique_id=1754982721]
 texture_filter = 1
-material = SubResource("ShaderMaterial_15v75")
 position = Vector2(0, -9.536743e-07)
 rotation = -1.5707964
 scale = Vector2(3, 3)
@@ -222,9 +176,6 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tete/Pioche/pioche" unique_id=970997569]
 position = Vector2(-1, -129)
 shape = SubResource("CapsuleShape2D_6nbh1")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Tete" unique_id=461512519]
-occluder = SubResource("OccluderPolygon2D_44saq")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=979780415]
 replication_config = SubResource("SceneReplicationConfig_tn7cv")

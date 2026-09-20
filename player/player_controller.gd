@@ -11,6 +11,7 @@ var friction = 1000
 var wheel_turn_speed = 10
 var target_zoom: Vector2 = Vector2.ONE
 var target_pos: Vector2
+@export var chasseur = false
 
 @export_category("dash parametre")
 @export var dash:bool
@@ -19,10 +20,7 @@ var target_pos: Vector2
 
 func _ready() -> void:
 	print("Joueur créé, path: ", get_path(), " sur peer id: ", multiplayer.get_unique_id())
-	if name == "chasseur":
-		$Tete.play("Red")
-	else:
-		$Tete.play("Blue")
+
 
 
 func _enter_tree() -> void:
@@ -38,6 +36,13 @@ func _physics_process(delta: float) -> void:
 	# First check if we have authority over this player
 	if not is_multiplayer_authority():
 		return
+
+
+	if chasseur == true:
+		$Tete.play("Red")
+	else:
+		$Tete.play("Blue")
+
 
 	animation()
 	progress_bar.value = healt

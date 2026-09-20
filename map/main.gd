@@ -4,8 +4,8 @@ const PLAYER_CONTROLLER = preload("uid://disid262nfj6n")
 
 var players: Array[CharacterBody2D]
 
-var chasseur = false
-
+@export var chasseur :bool
+@export var player_inst = 0
 
 func _ready() -> void:
 	$CanvasLayer.visible = true
@@ -22,15 +22,19 @@ func on_host_created() -> void:
 func spawn_player(peer_id: int) -> void:
 	var new_player := PLAYER_CONTROLLER.instantiate() as CharacterBody2D
 	new_player.name = str(peer_id)
-	#if chasseur == true:
-		#new_player.name = "chasseur"
-	#else:
-		#print(get_child(get_child_count() - 1))
-		#if get_child(get_child_count() - 1).name == "defender":
-			#new_player.name = "chasseur"
-		#new_player.name = "defender"
 	add_child(new_player)
 	initialize_player(new_player)
+	if player_inst == 0:
+		if chasseur == true:
+			new_player.chasseur = true
+		else:
+			new_player.chasseur = false
+	elif player_inst == 1:
+		if chasseur == true:
+			new_player.chasseur = false
+		else:
+			new_player.chasseur = true
+	player_inst += 1
 
 
 func initialize_player(player: CharacterBody2D) -> void:
