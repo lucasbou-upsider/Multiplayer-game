@@ -21,13 +21,14 @@ func on_host_created() -> void:
 # The server spawns the player that just connected
 func spawn_player(peer_id: int) -> void:
 	var new_player := PLAYER_CONTROLLER.instantiate() as CharacterBody2D
-	if chasseur == true:
-		new_player.name = "chasseur"
-	else:
-		print(get_child(get_child_count() - 1))
-		if get_child(get_child_count() - 1).name == "defender":
-			new_player.name = "chasseur"
-		new_player.name = "defender"
+	new_player.name = str(peer_id)
+	#if chasseur == true:
+		#new_player.name = "chasseur"
+	#else:
+		#print(get_child(get_child_count() - 1))
+		#if get_child(get_child_count() - 1).name == "defender":
+			#new_player.name = "chasseur"
+		#new_player.name = "defender"
 	add_child(new_player)
 	initialize_player(new_player)
 
