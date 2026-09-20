@@ -26,7 +26,7 @@ func _ready() -> void:
 
 
 func _enter_tree() -> void:
-	set_multiplayer_authority(multiplayer.get_unique_id())
+	set_multiplayer_authority(int(name))
 	
 	if is_multiplayer_authority():
 		$Camera2D.enabled = true
